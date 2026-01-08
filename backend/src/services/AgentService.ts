@@ -2,7 +2,6 @@ import { Bindings } from "../models/db";
 import type { Agent } from "../models/agent";
 import * as AgentRepository from "../repositories";
 import { generateToken, verifyToken } from "../utils/jwt";
-import { handleAgentThresholdNotification } from "../jobs/agent-task";
 import { handleAgentThresholdNotification, handleAgentOnlineNotification } from "../jobs/agent-task"; // 引入上线通知处理函数
 
 /**
