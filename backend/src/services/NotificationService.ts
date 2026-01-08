@@ -1046,9 +1046,9 @@ export async function createDefaultNotificationSettingsForUser(
     await repositories.createNotificationTemplate({
       name: "Agent监控模板",
       type: "agent",
-      subject: "【${status}】${name} 客户端状态变更",
+      subject: "${name} 客户端 ${status}",
       content:
-        "🔔 客户端状态变更通知\n\n📊 主机: ${name}\n🔄 状态: ${status} (之前: ${previous_status})\n🕒 时间: ${time}\n\n🖥️ 主机信息:\n  主机名: ${hostname}\n  IP地址: ${ip_addresses}\n  操作系统: ${os}\n\n❗ 错误信息: ${error}",
+        "${name} ${error}\n\n主机：${hostname}\n时间：${time}",
       is_default: true, // 修复: 将 1 修改为 true
       created_by: userId,
     });
