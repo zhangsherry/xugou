@@ -363,7 +363,7 @@ export async function manualCheckMonitor(id: number, userId: number, userRole: s
             userId, // 修复: 传入 userId
             "monitor",
             monitor.id,
-            result.previous_status,
+            result.previous_status || "unknown",
             result.status
           );
 
@@ -380,6 +380,14 @@ export async function manualCheckMonitor(id: number, userId: number, userRole: s
           console.log(
             `监控 ${monitor.name} (ID: ${monitor.id}) 状态变更，正在发送通知...`
           );
+          
+          // 信息添加红绿灯，同 monitor-task.ts
+          let errorMsg = result.error || "无";
+          if (result.status === "up") {
+            errorMsg = "服务已恢复访问 🟢";
+          } else if (result.status === "down") {
+             errorMsg = `${result.error || "服务无法访问"} 🔴`;
+          }
 
           // 准备通知变量
           const variables = {
@@ -393,7 +401,7 @@ export async function manualCheckMonitor(id: number, userId: number, userRole: s
               ? result.statusCode.toString()
               : "无",
             expected_status: monitor.expected_status.toString(),
-            error: result.error || "无",
+            error: errorMsg,
             details: `URL: ${monitor.url}\n响应时间: ${
               result.responseTime
             }ms\n状态码: ${result.statusCode || "无"}\n错误信息: ${
