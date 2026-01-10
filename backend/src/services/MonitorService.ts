@@ -387,7 +387,7 @@ export async function manualCheckMonitor(id: number, userId: number, userRole: s
             name: monitor.name,
             status: result.status,
             previous_status: result.previous_status || "未知",
-            time: new Date().toLocaleString("zh-CN"),
+            time: new Date().toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" }),
             response_time: `${result.responseTime}ms`,
             url: monitor.url,
             status_code: result.statusCode

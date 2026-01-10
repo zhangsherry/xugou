@@ -123,7 +123,7 @@ async function handleMonitorNotification(
       name: monitor.name,
       status: currentStatus,
       previous_status: previousStatus,
-      time: new Date().toLocaleString("zh-CN"),
+      time: new Date().toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" }),
       url: monitor.url,
       response_time: `${checkResult.responseTime}ms`,
       status_code: checkResult.statusCode

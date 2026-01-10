@@ -113,7 +113,7 @@ async function handleAgentOfflineNotification(
       hostname: agent.hostname || "未知",
       ip_addresses: getFormattedIPAddresses(agent.ip_addresses),
       os: agent.os || "未知",
-      error: "客户端连接超时🔴",
+      error: "客户端连接超时 🔴",
       details: `主机名: ${
         agent.hostname || "未知"
       }\nIP地址: ${getFormattedIPAddresses(
@@ -190,11 +190,11 @@ export async function handleAgentOnlineNotification(
       name: agentName,
       status: "online",
       previous_status: "offline",
-      time: new Date().toLocaleString("zh-CN"),
+      time: new Date().toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" }),
       hostname: agent.hostname || "未知",
       ip_addresses: getFormattedIPAddresses(agent.ip_addresses),
       os: agent.os || "未知",
-      error: "客户端连接已恢复🟢",
+      error: "客户端连接已恢复 🟢",
       details: `主机名: ${
         agent.hostname || "未知"
       }\nIP地址: ${getFormattedIPAddresses(
