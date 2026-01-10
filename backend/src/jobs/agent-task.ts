@@ -109,7 +109,7 @@ async function handleAgentOfflineNotification(
       name: agentName,
       status: "offline",
       previous_status: "online", // 添加previous_status变量
-      time: new Date().toLocaleString("zh-CN"),
+      time: new Date().toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" }),
       hostname: agent.hostname || "未知",
       ip_addresses: getFormattedIPAddresses(agent.ip_addresses),
       os: agent.os || "未知",
@@ -340,7 +340,7 @@ export async function handleAgentThresholdNotification(
       name: agent.name,
       status: `${metricName}告警`,
       previous_status: "normal", // 添加previous_status变量
-      time: new Date().toLocaleString("zh-CN"),
+      time: new Date().toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" }),
       hostname: agent.hostname || "未知",
       ip_addresses: getFormattedIPAddresses(agent.ip_addresses),
       os: agent.os || "未知",
